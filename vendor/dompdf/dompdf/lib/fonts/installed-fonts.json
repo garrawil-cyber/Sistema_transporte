@@ -1,0 +1,8 @@
+{
+    "dejavu sans": {
+        "bold": "dejavu_sans_bold_70f9337169d224ccbc9ef41b5f46d3c9",
+        "bold_italic": "C:\\wamp64\\www\\Sistema_transporte\\vendor\\dompdf\\dompdf\/lib\/fonts\/DejaVuSans-BoldOblique",
+        "italic": "C:\\wamp64\\www\\Sistema_transporte\\vendor\\dompdf\\dompdf\/lib\/fonts\/dejavu_sans_italic_5822c70d037da7c8de12d16693389855",
+        "normal": "C:\\wamp64\\www\\Sistema_transporte\\vendor\\dompdf\\dompdf\/lib\/fonts\/dejavu_sans_normal_25ea194fd82e7726b1ede19b9c8c9ee7"
+    }
+}
