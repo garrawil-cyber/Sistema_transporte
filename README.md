@@ -1,4 +1,6 @@
-﻿# 🚌 Sistema de Transporte
+![Sistema de Transporte](docs/banner.svg)
+
+ # 🚌 Sistema de Transporte
 
 Sistema web integral para la gestión de una empresa de transporte terrestre de pasajeros y encomiendas. Desarrollado en **PHP puro (MVC)** con **MySQL** y **Bootstrap 5**, optimizado para entornos con recursos limitados y compatible con despliegues en XAMPP/Laragon.
 
