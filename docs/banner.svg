@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300">
+  <defs>
+    <!-- Gradiente de fondo: verde-azul para transporte -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f5132;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#198754;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#0dcaf0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d6efd;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Gradiente del bus -->
+    <linearGradient id="busGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e7f3ff;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Patrón de puntos decorativos -->
+    <pattern id="dots" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.5" fill="#ffffff" opacity="0.15" />
+    </pattern>
+  </defs>
+
+  <!-- Fondo principal -->
+  <rect width="1200" height="300" fill="url(#bgGradient)" />
+  <rect width="1200" height="300" fill="url(#dots)" />
+
+  <!-- Círculos decorativos -->
+  <circle cx="1080" cy="70" r="180" fill="#ffffff" opacity="0.06" />
+  <circle cx="120" cy="260" r="140" fill="#ffffff" opacity="0.05" />
+
+  <!-- Carretera decorativa -->
+  <g opacity="0.15">
+    <rect x="0" y="255" width="1200" height="4" fill="#ffffff" />
+    <rect x="0" y="275" width="1200" height="2" fill="#ffffff" />
+    <line x1="0" y1="265" x2="60" y2="265" stroke="#ffffff" stroke-width="3" />
+    <line x1="120" y1="265" x2="180" y2="265" stroke="#ffffff" stroke-width="3" />
+    <line x1="240" y1="265" x2="300" y2="265" stroke="#ffffff" stroke-width="3" />
+    <line x1="360" y1="265" x2="420" y2="265" stroke="#ffffff" stroke-width="3" />
+    <line x1="480" y1="265" x2="540" y2="265" stroke="#ffffff" stroke-width="3" />
+    <line x1="600" y1="265" x2="660" y2="265" stroke="#ffffff" stroke-width="3" />
+    <line x1="720" y1="265" x2="780" y2="265" stroke="#ffffff" stroke-width="3" />
+    <line x1="840" y1="265" x2="900" y2="265" stroke="#ffffff" stroke-width="3" />
+    <line x1="960" y1="265" x2="1020" y2="265" stroke="#ffffff" stroke-width="3" />
+    <line x1="1080" y1="265" x2="1140" y2="265" stroke="#ffffff" stroke-width="3" />
+  </g>
+
+  <!-- Ícono del bus -->
+  <g transform="translate(80, 70)">
+    <!-- Sombra -->
+    <ellipse cx="65" cy="175" rx="60" ry="8" fill="#000000" opacity="0.2" />
+
+    <!-- Cuerpo del bus -->
+    <rect x="5" y="20" width="120" height="130" rx="12" fill="url(#busGradient)" />
+
+    <!-- Franja decorativa superior -->
+    <rect x="5" y="20" width="120" height="25" rx="12" fill="#ffc107" />
+    <rect x="5" y="40" width="120" height="5" fill="#ffc107" />
+
+    <!-- Ventanas -->
+    <rect x="15" y="55" width="30" height="30" rx="4" fill="#0d6efd" opacity="0.6" />
+    <rect x="50" y="55" width="30" height="30" rx="4" fill="#0d6efd" opacity="0.6" />
+    <rect x="85" y="55" width="30" height="30" rx="4" fill="#0d6efd" opacity="0.6" />
+
+    <!-- Ruedas -->
+    <circle cx="30" cy="150" r="14" fill="#212529" />
+    <circle cx="30" cy="150" r="6" fill="#6c757d" />
+    <circle cx="100" cy="150" r="14" fill="#212529" />
+    <circle cx="100" cy="150" r="6" fill="#6c757d" />
+
+    <!-- Faro delantero -->
+    <rect x="118" y="100" width="10" height="18" rx="3" fill="#ffc107" />
+  </g>
+
+  <!-- Título principal -->
+  <text x="280" y="140" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+        font-size="56" font-weight="800" fill="#ffffff" letter-spacing="-1">
+    Sistema de Transporte
+  </text>
+
+  <!-- Subtítulo -->
+  <text x="285" y="185" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+        font-size="20" font-weight="400" fill="#ffffff" opacity="0.9">
+    Gestión integral de pasajes, encomiendas y giros
+  </text>
+
+  <!-- Badges de tecnologías -->
+  <g transform="translate(285, 210)">
+    <!-- PHP -->
+    <rect x="0" y="0" width="75" height="30" rx="15" fill="#ffffff" opacity="0.2" />
+    <text x="37" y="20" font-family="Arial, sans-serif" font-size="14" font-weight="600"
+          fill="#ffffff" text-anchor="middle">PHP 8+</text>
+
+    <!-- MySQL -->
+    <rect x="85" y="0" width="90" height="30" rx="15" fill="#ffffff" opacity="0.2" />
+    <text x="130" y="20" font-family="Arial, sans-serif" font-size="14" font-weight="600"
+          fill="#ffffff" text-anchor="middle">MySQL</text>
+
+    <!-- Bootstrap -->
+    <rect x="185" y="0" width="105" height="30" rx="15" fill="#ffffff" opacity="0.2" />
+    <text x="237" y="20" font-family="Arial, sans-serif" font-size="14" font-weight="600"
+          fill="#ffffff" text-anchor="middle">Bootstrap 5</text>
+  </g>
+</svg>

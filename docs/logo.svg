@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#198754" />
+      <stop offset="100%" style="stop-color:#0d6efd" />
+    </linearGradient>
+    <linearGradient id="busGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff" />
+      <stop offset="100%" style="stop-color:#e7f3ff" />
+    </linearGradient>
+  </defs>
+
+  <!-- Fondo redondeado -->
+  <rect width="500" height="500" rx="80" fill="url(#bgGrad)" />
+
+  <!-- Círculos decorativos -->
+  <circle cx="420" cy="80" r="150" fill="#ffffff" opacity="0.08" />
+  <circle cx="80" cy="440" r="120" fill="#ffffff" opacity="0.08" />
+
+  <!-- Bus -->
+  <g transform="translate(120, 100)">
+    <!-- Sombra -->
+    <ellipse cx="130" cy="280" rx="110" ry="12" fill="#000000" opacity="0.2" />
+
+    <!-- Cuerpo -->
+    <rect x="0" y="30" width="260" height="220" rx="20" fill="url(#busGrad)" />
+
+    <!-- Franja superior -->
+    <rect x="0" y="30" width="260" height="40" rx="15" fill="#ffc107" />
+    <rect x="0" y="60" width="260" height="10" fill="#ffc107" />
+
+    <!-- Ventanas -->
+    <rect x="20" y="90" width="60" height="60" rx="8" fill="#0d6efd" opacity="0.6" />
+    <rect x="100" y="90" width="60" height="60" rx="8" fill="#0d6efd" opacity="0.6" />
+    <rect x="180" y="90" width="60" height="60" rx="8" fill="#0d6efd" opacity="0.6" />
+
+    <!-- Ruedas -->
+    <circle cx="55" cy="255" r="25" fill="#212529" />
+    <circle cx="55" cy="255" r="10" fill="#6c757d" />
+    <circle cx="205" cy="255" r="25" fill="#212529" />
+    <circle cx="205" cy="255" r="10" fill="#6c757d" />
+
+    <!-- Faro -->
+    <rect x="250" y="150" width="20" height="35" rx="5" fill="#ffc107" />
+  </g>
+</svg>
