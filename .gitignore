@@ -1,0 +1,37 @@
+# Archivos de entorno (NUNCA subir al repo)
+.env
+.env.local
+.env.*.local
+
+# Certificados (contienen claves privadas)
+/certs/*.pem
+/certs/*.key
+/certs/*.crt
+
+# Logs
+/logs/*.log
+*.log
+
+# Uploads (opcional, si no quieres versionar fotos)
+/public/uploads/*
+!/public/uploads/.gitkeep
+
+# Configuración local
+/config/local.php
+
+# Backups
+/backups/*.sql
+/backups/**/*.sql
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Dependencias (si no las versionas)
+/vendor/
