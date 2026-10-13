@@ -30,7 +30,7 @@ Sistema web integral para la gestión de una empresa de transporte terrestre de 
 - [Auditoría](#-auditoría)
 - [Backups](#-backups)
 - [Contribución](#-contribución)
-- - [Changelog](#-changelog)
+- [Changelog](#-changelog)
 - [Licencia](#-licencia)
 
 ---
