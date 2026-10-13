@@ -1,0 +1,99 @@
+<?php
+/**
+ * Script de migración: Asignar fila/columna/tipo a asientos existentes
+ * 
+ * ⚠️ EJECUTAR UNA SOLA VEZ
+ * 
+ * Uso: localhost/Sistema_transporte/scripts/migrar_asientos.php
+ */
+
+require_once __DIR__ . '/../app/config/config.php';
+require_once __DIR__ . '/../app/config/Database.php';
+
+$db = Database::getInstance()->getConnection();
+
+// ============================================================
+// CONFIGURACIÓN DE DISTRIBUCIÓN POR TIPO DE SERVICIO
+// ============================================================
+// 4 columnas = 2 + pasillo + 2  → ECONOMICO, SEMICAMA
+// 3 columnas = 2 + pasillo + 1  → CAMA (más espacio)
+// ============================================================
+
+$config_por_servicio = [
+    'ECONOMICO'  => ['por_fila' => 4, 'pisos' => 2],
+    'SEMICAMA'   => ['por_fila' => 4, 'pisos' => 2],
+    'CAMA'       => ['por_fila' => 3, 'pisos' => 2],
+];
+
+echo "<pre style='font-family: monospace; padding: 20px; background: #f8f9fa;'>";
+echo "🚀 <strong>Iniciando migración de asientos...</strong>\n\n";
+
+// 1. Obtener todos los viajes con su tipo de servicio
+$sql = "SELECT v.id as viaje_id, v.bus_id, b.capacidad_total, b.tipo_servicio
+        FROM viajes v
+        JOIN buses b ON v.bus_id = b.id
+        ORDER BY v.id";
+$stmt = $db->query($sql);
+$viajes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$total_actualizados = 0;
+
+foreach ($viajes as $viaje) {
+    $viaje_id = (int)$viaje['viaje_id'];
+    $capacidad = (int)$viaje['capacidad_total'];
+    $tipo_servicio = $viaje['tipo_servicio'];
+    
+    // Determinar configuración
+    $config = $config_por_servicio[$tipo_servicio] ?? ['por_fila' => 4, 'pisos' => 2];
+    $por_fila = $config['por_fila'];
+    $num_pisos = $config['pisos'];
+    
+    // Asientos por piso
+    $asientos_por_piso = ceil($capacidad / $num_pisos);
+    
+    echo "🚌 Viaje #{$viaje_id} ({$tipo_servicio}) → Capacidad: {$capacidad}, {$num_pisos} pisos, {$por_fila} por fila\n";
+    
+    // Obtener asientos del viaje ordenados
+    $sql2 = "SELECT id, numero_asiento FROM asientos WHERE viaje_id = ? ORDER BY id ASC";
+    $stmt2 = $db->prepare($sql2);
+    $stmt2->execute([$viaje_id]);
+    $asientos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+    
+    $contador = 0;
+    foreach ($asientos as $asiento) {
+        $contador++;
+        
+        // Determinar piso
+        $piso = ($contador <= $asientos_por_piso) ? '1' : '2';
+        
+        // Posición dentro del piso
+        $posicion_en_piso = $contador - (($piso === '2') ? $asientos_por_piso : 0);
+        
+        // Fila y columna
+        $fila = (int)ceil($posicion_en_piso / $por_fila);
+        $columna = (($posicion_en_piso - 1) % $por_fila) + 1;
+        
+        // Determinar tipo (ventana vs pasillo)
+        $tipo = 'ESTANDAR';
+        if ($por_fila === 4) {
+            // Columnas: 1=ventana izq, 2=pasillo izq, 3=pasillo der, 4=ventana der
+            $tipo = ($columna == 1 || $columna == 4) ? 'VENTANA' : 'PASILLO';
+        } elseif ($por_fila === 3) {
+            // CAMA: 1=ventana izq, 2=pasillo, 3=ventana der
+            $tipo = ($columna == 1 || $columna == 3) ? 'CAMA' : 'PASILLO';
+        }
+        
+        // Actualizar
+        $sql3 = "UPDATE asientos SET piso = ?, fila = ?, columna = ?, tipo = ? WHERE id = ?";
+        $stmt3 = $db->prepare($sql3);
+        $stmt3->execute([$piso, $fila, $columna, $tipo, $asiento['id']]);
+        
+        $total_actualizados++;
+    }
+    
+    echo "   ✅ {$contador} asientos migrados\n\n";
+}
+
+echo "🎉 <strong>Total: {$total_actualizados} asientos migrados</strong>\n";
+echo "✨ Migración completada\n";
+echo "</pre>";

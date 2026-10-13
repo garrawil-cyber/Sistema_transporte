@@ -1,0 +1,38 @@
+/* ============================================================
+   VALIDACIÓN DE DOCUMENTO
+   ============================================================ */
+.form-control.is-valid,
+.form-select.is-valid {
+    border-color: #198754;
+    background-image: none; /* Quitar el check de Bootstrap por defecto */
+}
+
+.form-control.is-invalid,
+.form-select.is-invalid {
+    border-color: #dc3545;
+    background-image: none; /* Quitar el icono de Bootstrap por defecto */
+}
+
+.input-group:has(.form-control.is-valid) .input-group-text {
+    border-color: #198754;
+    background-color: rgba(25, 135, 84, 0.1);
+}
+
+.input-group:has(.form-control.is-invalid) .input-group-text {
+    border-color: #dc3545;
+    background-color: rgba(220, 53, 69, 0.1);
+}
+
+.invalid-feedback {
+    display: block;
+    font-size: 0.8rem;
+    margin-top: 4px;
+    color: #dc3545;
+}
+
+/* Ayuda debajo del input */
+#ayuda_documento {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.75rem;
+}
